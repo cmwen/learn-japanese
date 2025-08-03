@@ -14,8 +14,11 @@
 
 <nav>
   <button on:click={() => setView('kana_charts')} class:active={activeView === 'kana_charts'}>{$t('hiragana_chart')}</button>
+  <button on:click={() => setView('kanji_charts')} class:active={activeView === 'kanji_charts'}>{$t('kanji_chart')}</button>
   <button on:click={() => setView('vocabulary_list')} class:active={activeView === 'vocabulary_list'}>{$t('vocabulary_list')}</button>
+  <button on:click={() => setView('progress')} class:active={activeView === 'progress'}>{$t('progress')}</button>
   <button on:click={() => setView('quiz')} class:active={activeView === 'quiz'}>{$t('quiz')}</button>
+  <button on:click={() => setView('settings')} class:active={activeView === 'settings'}>{$t('settings')}</button>
 </nav>
 
 <style>

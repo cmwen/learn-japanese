@@ -2,13 +2,14 @@
   import { theme } from '../lib/stores';
   import { t } from '../lib/i18n'; // Import t directly
 
-  // Remove export let t; as t is no longer a prop
-
   // Reactive declarations using the imported t store
   $: themeLabel = $t('theme');
   $: systemOption = $t('theme_system');
   $: lightOption = $t('theme_light');
   $: darkOption = $t('theme_dark');
+  $: oceanBlueOption = $t('theme_ocean_blue');
+  $: forestGreenOption = $t('theme_forest_green');
+  $: highContrastOption = $t('theme_high_contrast');
 
   // Reactive statement to log the translation
   $: console.log('ThemeSwitcher: themeLabel', themeLabel);
@@ -20,6 +21,9 @@
     <option value="system">{systemOption}</option>
     <option value="light">{lightOption}</option>
     <option value="dark">{darkOption}</option>
+    <option value="ocean-blue">{oceanBlueOption}</option>
+    <option value="forest-green">{forestGreenOption}</option>
+    <option value="high-contrast">{highContrastOption}</option>
   </select>
 </div>
 

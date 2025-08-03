@@ -23,3 +23,10 @@ export const masteryProgress = createPersistentStore('kanjiGo_masteryProgress', 
 });
 
 export const theme = createPersistentStore('kanjiGo_theme', 'system');
+
+export const gamificationProgress = createPersistentStore('kanjiGo_gamificationProgress', {
+  currentStreak: 0,
+  longestStreak: 0,
+  lastStudyDate: null, // ISO string 'YYYY-MM-DD'
+  totalPoints: 0,
+});

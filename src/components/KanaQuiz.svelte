@@ -1,7 +1,7 @@
 <script>
   import { hiragana, katakana } from '../data/kana';
   import { t } from '../lib/i18n';
-  import { masteryProgress } from '../lib/stores';
+  import { masteryProgress, gamificationProgress } from '../lib/stores'; // Import gamificationProgress
   import Flashcard from './Flashcard.svelte';
   import { onMount } from 'svelte';
 
@@ -48,6 +48,10 @@
         if (!progress[type].includes(currentCard.id)) {
           progress[type].push(currentCard.id);
         }
+        return progress;
+      });
+      gamificationProgress.update(progress => {
+        progress.totalPoints += 10; // Award 10 points for correct answer
         return progress;
       });
     }

@@ -4,8 +4,15 @@
   import { language } from '../lib/stores';
   import { get } from 'svelte/store';
 
+  export let filterTheme = 'all'; // New prop for filtering
+
   let currentLanguage = get(language);
   language.subscribe(value => currentLanguage = value);
+
+  // Filtered vocabulary based on selected theme
+  $: filteredVocabulary = filterTheme === 'all'
+    ? vocabulary
+    : vocabulary.filter(word => word.themes && word.themes.includes(filterTheme));
 
   function getTranslation(word) {
     return word[currentLanguage] || word.en; // Fallback to English
@@ -15,7 +22,7 @@
 <div class="vocabulary-list">
   <h2>{$t('vocabulary_list')}</h2>
   <div class="grid">
-    {#each vocabulary as word (word.id)}
+    {#each filteredVocabulary as word (word.id)}
       <div class="vocab-item">
         <span class="kana-char">{word.kana}</span>
         <span class="romaji">{word.romaji}</span>

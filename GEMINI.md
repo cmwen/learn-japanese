@@ -16,12 +16,14 @@ Gemini acted as a multi-faceted assistant throughout the project, fulfilling rol
 
 *   **PRD Creation:** Collaborated on defining the initial Product Requirements Document, including core features, goals, and multilingual support.
 *   **Technical Design:** Developed the detailed technical design specification, outlining the Svelte/Vite architecture, module breakdown, and data structures.
-*   **Project Scaffolding:** Set up the initial project structure, including `package.json`, `vite.config.js`, `svelte.config.js`, and core directories/files.
+*   **Project Scaffolding:** Set up the initial project structure, including `package.json`, `vite.config.js`, `svelte.config.js`, and core directories/files, establishing a module-based project structure.
 *   **Debugging:** Identified and resolved critical JavaScript and Svelte-related errors during development, including dependency conflicts and reactivity issues.
-*   **Feature Implementation:** Assisted in the creation and integration of key components like `Navigation.svelte`, `LanguageSwitcher.svelte`, `KanaChart.svelte`, `VocabularyList.svelte`, and `KanaQuiz.svelte`.
+*   **Feature Implementation:** Assisted in the creation and integration of key Svelte components like `Navigation.svelte`, `LanguageSwitcher.svelte`, `KanaChart.svelte`, `VocabularyList.svelte`, and `KanaQuiz.svelte`, along with data modules (`kana.js`, `kanji.js`, `vocabulary.js`), internationalization (`i18n.js`), and Svelte stores (`stores.js`).
 *   **Data Population:** Provided comprehensive Hiragana, Katakana, and basic vocabulary data.
-*   **Deployment Setup:** Configured GitHub Actions for automated deployment to GitHub Pages.
+*   **Deployment Setup:** Configured GitHub Actions for automated deployment to GitHub Pages, leveraging the `build` script defined in `package.json`.
 *   **Documentation:** Ensured project documentation (`PRD.md`, `TECH_DESIGN.md`, `V2_IDEAS.md`) was organized and up-to-date.
+*   **Kanji Stroke Order SVG Generation:** Developed a script (`generate_kanji_svgs.sh`) to automate the process of downloading and integrating Kanji stroke order SVGs from the KanjiVG project, ensuring repeatability and ease of adding new Kanji.
+*   **PWA Integration:** Assisted with the setup of Progressive Web App features, including `manifest.json` and `service-worker.js`.
 
 ## Disclaimer
 

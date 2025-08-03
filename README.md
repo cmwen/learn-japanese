@@ -35,6 +35,16 @@ This project was developed with the assistance of Google Gemini. For more detail
     ```
     The app will be available at `http://localhost:5173/` (or similar).
 
+## Adding New Kanji
+
+To add new Kanji characters:
+1.  Update `src/data/kanji.js` with the new Kanji character, its readings, meaning, and a placeholder for `strokeOrderImg` (e.g., `/assets/kanji/new_kanji_stroke.svg`).
+2.  Run the Kanji SVG generation script:
+    ```bash
+    ./generate_kanji_svgs.sh
+    ```
+    This script will download the necessary SVG data from KanjiVG and place the stroke order SVG for the new Kanji in `public/assets/kanji/` with the correct filename.
+
 ## Deployment
 
 This application is set up for automatic deployment to GitHub Pages using GitHub Actions. Pushing to the `main` branch will trigger a build and deploy to the `gh-pages` branch.

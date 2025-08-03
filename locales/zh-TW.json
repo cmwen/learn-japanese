@@ -1,0 +1,15 @@
+{
+  "main_title": "漢字Go",
+  "flip_card": "翻卡",
+  "i_knew_it": "我知道了！",
+  "i_didnt_know": "我不知道。",
+  "hiragana_chart": "平假名圖表",
+  "katakana_chart": "片假名圖表",
+  "vocabulary_list": "詞彙列表",
+  "quiz": "測驗",
+  "settings": "設定",
+  "language": "語言",
+  "quiz_finished": "測驗結束！",
+  "quiz_complete": "測驗完成！",
+  "start_new_quiz": "開始新測驗"
+}

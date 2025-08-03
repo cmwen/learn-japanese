@@ -23,17 +23,18 @@
 
 <style>
   .language-switcher {
-    margin: 20px 0;
-    text-align: center;
+
   }
   label {
-    margin-right: 10px;
+    margin-right: 0.5em;
     font-weight: bold;
   }
   select {
-    padding: 8px;
+    padding: 0.5em;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     font-size: 1em;
+    background-color: var(--card-background);
+    color: var(--text-color);
   }
 </style>

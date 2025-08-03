@@ -63,8 +63,8 @@
   }
 
   .flashcard-front {
-    background-color: #f0f8ff; /* Light blue */
-    color: #333;
+    background-color: var(--card-background);
+    color: var(--text-color);
     font-size: 3em;
     word-break: break-word; /* Allow long words to break */
   }

@@ -1,10 +1,13 @@
 import App from './App.svelte';
+import './styles/global.css';
+import { initI18n } from './lib/i18n';
 
-const app = new App({
-  target: document.getElementById('app'),
+// Initialize i18n and then mount the Svelte app
+initI18n().then(() => {
+  new App({
+    target: document.getElementById('app'),
+  });
 });
-
-export default app;
 
 // Register service worker
 if ('serviceWorker' in navigator) {

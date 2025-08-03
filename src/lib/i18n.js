@@ -3,11 +3,13 @@ import { language } from './stores';
 
 export const translations = writable({});
 export const currentLocale = writable('en');
+export const translationsLoaded = writable(false); // New store
 
 export async function initI18n() {
   const lang = get(language);
   await loadTranslations(lang);
   currentLocale.set(lang);
+  translationsLoaded.set(true); // Set to true after loading
 }
 
 export async function loadTranslations(lang) {
@@ -36,7 +38,9 @@ export const t = derived(translations, ($translations) => (key) => {
 // Reactively update translations when language store changes
 language.subscribe(async (lang) => {
   if (lang && get(currentLocale) !== lang) {
+    translationsLoaded.set(false); // Set to false before loading new translations
     await loadTranslations(lang);
     currentLocale.set(lang);
+    translationsLoaded.set(true); // Set to true after loading new translations
   }
 });

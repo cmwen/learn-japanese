@@ -28,7 +28,7 @@
   }
 
   button {
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 10px 15px;

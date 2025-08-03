@@ -28,10 +28,10 @@
 <style>
   .vocabulary-list {
     margin-top: 20px;
-    border: 1px solid #eee;
+    border: 1px solid var(--border-color);
     padding: 15px;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: var(--card-background);
   }
   .grid {
     display: grid;
@@ -45,15 +45,15 @@
     align-items: center;
     justify-content: center;
     padding: 10px 5px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
-    background-color: #fff;
+    background-color: var(--card-background);
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   }
   .kana-char {
     font-size: 1.2em;
     font-weight: bold;
-    color: #333;
+    color: var(--text-color);
   }
   .romaji {
     font-size: 0.8em;

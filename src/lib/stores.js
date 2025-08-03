@@ -21,3 +21,5 @@ export const masteryProgress = createPersistentStore('kanjiGo_masteryProgress', 
   katakana: [],
   vocabulary: []
 });
+
+export const theme = createPersistentStore('kanjiGo_theme', 'system');

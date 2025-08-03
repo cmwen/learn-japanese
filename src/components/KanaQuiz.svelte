@@ -81,10 +81,10 @@
 <style>
   .kana-quiz {
     margin-top: 20px;
-    border: 1px solid #eee;
+    border: 1px solid var(--border-color);
     padding: 15px;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: var(--card-background);
     text-align: center;
   }
   .quiz-controls button {
@@ -97,7 +97,7 @@
     transition: background-color 0.3s ease;
   }
   .quiz-controls button:first-child {
-    background-color: #28a745; /* Green for knew it */
+    background-color: var(--primary-color);
     color: white;
   }
   .quiz-controls button:first-child:hover {

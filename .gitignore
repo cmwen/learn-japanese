@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# Optional Prettier cache
+.prettiercache
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vite production build output
+dist/
+
+# SvelteKit build output (if applicable, though not used here)
+.svelte-kit/
+
+# VSCode files
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db

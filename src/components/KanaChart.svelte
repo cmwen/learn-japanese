@@ -4,7 +4,6 @@
   export let kanaData = [];
   export let type = ''; // 'hiragana' or 'katakana'
   export let masteredIds = []; // Array of mastered Kana IDs
-  export let selectedExample = null; // New prop for selected vocabulary example
   export let t; // Receive t function as a prop
 
   const dispatch = createEventDispatcher();
@@ -31,19 +30,6 @@
       </div>
     {/each}
   </div>
-
-  {#if selectedExample}
-    <div class="vocabulary-example">
-      <h3>{t('vocabulary_example')}</h3>
-      <p><strong>{t('kana')}:</strong> {selectedExample.kana}</p>
-      <p><strong>{t('romaji')}:</strong> {selectedExample.romaji}</p>
-      <p><strong>{t('meaning')}:</strong> {t(selectedExample.id)}</p>
-    </div>
-  {:else}
-    <div class="vocabulary-example">
-      <p>{t('no_vocabulary_example_selected')}</p>
-    </div>
-  {/if}
 </div>
 
 <style>
@@ -87,5 +73,12 @@
   .kana-item.mastered {
     background-color: #d4edda; /* Light green for mastered items */
     border-color: #28a745;
+  }
+
+  .vocabulary-example-content {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--background-color);
+    color: var(--text-color);
   }
 </style>

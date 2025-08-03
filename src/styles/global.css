@@ -1,54 +1,79 @@
 :root {
   --background-color: #ffffff;
+  --background-color-primary: #ffffff;
+  --background-color-secondary: #f9f9f9;
   --text-color: #333333;
+  --text-color-primary: #333333;
+  --text-color-secondary: #666666;
   --primary-color: #4CAF50;
   --secondary-color: #2196F3;
   --border-color: #cccccc;
   --card-background: #f9f9f9;
   --card-border: #e0e0e0;
+  --hover-color: #f0f0f0;
 }
 
 body.theme-dark {
   --background-color: #333333;
+  --background-color-primary: #333333;
+  --background-color-secondary: #444444;
   --text-color: #f0f0f0;
+  --text-color-primary: #f0f0f0;
+  --text-color-secondary: #cccccc;
   --primary-color: #66BB6A;
   --secondary-color: #64B5F6;
   --border-color: #555555;
   --card-background: #444444;
   --card-border: #666666;
+  --hover-color: #555555;
 }
 
 /* Ocean Blue Theme */
 body.theme-ocean-blue {
   --background-color: #e0f2f7;
+  --background-color-primary: #e0f2f7;
+  --background-color-secondary: #f0faff;
   --text-color: #003366;
+  --text-color-primary: #003366;
+  --text-color-secondary: #0055aa;
   --primary-color: #007bff;
   --secondary-color: #66b3ff;
   --border-color: #a7d9ed;
   --card-background: #f0faff;
   --card-border: #cce7f0;
+  --hover-color: #d0eaf2;
 }
 
 /* Forest Green Theme */
 body.theme-forest-green {
   --background-color: #e6ffe6;
+  --background-color-primary: #e6ffe6;
+  --background-color-secondary: #f0fff0;
   --text-color: #1a4d1a;
+  --text-color-primary: #1a4d1a;
+  --text-color-secondary: #336633;
   --primary-color: #28a745;
   --secondary-color: #66cc66;
   --border-color: #a7edb3;
   --card-background: #f0fff0;
   --card-border: #cce7cc;
+  --hover-color: #d6f5d6;
 }
 
 /* High Contrast Theme */
 body.theme-high-contrast {
   --background-color: #000000;
+  --background-color-primary: #000000;
+  --background-color-secondary: #333333;
   --text-color: #ffffff;
+  --text-color-primary: #ffffff;
+  --text-color-secondary: #cccccc;
   --primary-color: #ffff00;
   --secondary-color: #00ffff;
   --border-color: #ffffff;
   --card-background: #333333;
   --card-border: #cccccc;
+  --hover-color: #666666;
 }
 
 body {
@@ -98,6 +123,8 @@ select {
   border: 1px solid var(--card-border);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+
 
 .mastered {
   background-color: #e6ffe6 !important; /* Light green for mastered items */

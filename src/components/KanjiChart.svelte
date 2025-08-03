@@ -3,15 +3,14 @@
   import { kanjiData } from '../data/kanji';
   import { vocabulary } from '../data/vocabulary';
   import { masteryProgress } from '../lib/stores';
-
-  // This component will display a grid of Kanji characters.
-  // For now, we'll just display the kanji character, onyomi, kunyomi, and meaning.
+  import { createEventDispatcher } from 'svelte';
 
   export let masteredIds = [];
-  let selectedKanji = null;
+
+  const dispatch = createEventDispatcher();
 
   function selectKanji(kanji) {
-    selectedKanji = kanji;
+    dispatch('selectKanji', kanji);
     masteryProgress.update(progress => {
       if (!progress.kanji.includes(kanji.id)) {
         progress.kanji.push(kanji.id);
@@ -41,29 +40,6 @@
       </div>
     {/each}
   </div>
-
-  {#if selectedKanji}
-    <div class="selected-kanji-details">
-      <h3>{$t('selected_kanji')}: {selectedKanji.kanji}</h3>
-      <p><strong>{$t('meaning')}:</strong> {$t(selectedKanji.meaning)}</p>
-      <p><strong>{$t('onyomi')}:</strong> {selectedKanji.onyomi.join(', ')}</p>
-      <p><strong>{$t('kunyomi')}:</strong> {selectedKanji.kunyomi.join(', ')}</p>
-      {#if selectedKanji.strokeOrderImg}
-        <img src={selectedKanji.strokeOrderImg} alt="{$t('stroke_order')} {selectedKanji.kanji}" />
-      {/if}
-      {#if selectedKanji.examples && selectedKanji.examples.length > 0}
-        <h4>{$t('examples')}:</h4>
-        <ul>
-          {#each selectedKanji.examples as exampleId}
-            {@const example = vocabulary.find(v => v.id === exampleId)}
-            {#if example}
-              <li>{example.kana} ({example.romaji}) - {$t(example.en)}</li>
-            {/if}
-          {/each}
-        </ul>
-      {/if}
-    </div>
-  {/if}
 </div>
 
 <style>
@@ -109,31 +85,5 @@
     font-size: 0.8em;
     color: var(--text-color-secondary);
     text-align: center;
-  }
-
-  .selected-kanji-details {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    background-color: var(--background-color-secondary);
-  }
-
-  .selected-kanji-details h3 {
-    margin-top: 0;
-    color: var(--text-color-primary);
-  }
-
-  .selected-kanji-details p {
-    margin-bottom: 5px;
-    color: var(--text-color-secondary);
-  }
-
-  .selected-kanji-details img {
-    max-width: 100px;
-    height: auto;
-    margin-top: 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
   }
 </style>

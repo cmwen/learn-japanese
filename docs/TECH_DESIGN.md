@@ -127,6 +127,14 @@ To maintain clarity and separation of concerns, the project will use the followi
     *   Houses individual, reusable Svelte components (e.g., `KanaChart.svelte`, `Flashcard.svelte`, `VocabularyList.svelte`).
     *   Each component will manage its own local state and props, receiving data from parent components or subscribing to Svelte stores.
 
+*   **Responsive Detail Panel (BottomSheet.svelte):**
+    *   A new reusable Svelte component (`BottomSheet.svelte`) will be created to display detailed information for selected items (e.g., Kanji, Kana).
+    *   **Behavior:**
+        *   On **desktop**, it will appear as a fixed-position panel adjacent to the main content area (e.g., to the right of the chart).
+        *   On **mobile**, it will function as a bottom sheet, sliding up from the bottom of the screen, covering a portion of the main content.
+        *   It will be dismissible (e.g., by clicking an overlay or swiping down on mobile).
+    *   **Integration:** Components like `KanjiChart.svelte` will pass selected item data to `BottomSheet.svelte` and control its visibility.
+
 *   **`src/lib/stores.js`:**
     *   Defines Svelte `writable` stores for managing global application state (e.g., `language`, `masteryProgress`).
     *   These stores will handle reading from and writing to `localStorage` to persist user data.

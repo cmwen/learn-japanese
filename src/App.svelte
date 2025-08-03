@@ -14,15 +14,21 @@
   import ProgressDisplay from './components/ProgressDisplay.svelte'; // Import ProgressDisplay
   import Settings from './components/Settings.svelte'; // Import Settings
   import Navigation from './components/Navigation.svelte';
+  import BottomSheet from './components/BottomSheet.svelte';
   
   
         import { masteryProgress, gamificationProgress } from './lib/stores';
   import { derived } from 'svelte/store';
 
   let currentKanaExample = null; // New reactive state for selected Kana example
+  let selectedKanjiExample = null; // New reactive state for selected Kanji example
 
   let activeView = 'kana_charts'; // Default view
   let selectedVocabularyTheme = 'all'; // New state for vocabulary filter
+
+  let showBottomSheet = false;
+  let bottomSheetTitle = '';
+  let bottomSheetContent = null;
 
   
 
@@ -63,8 +69,32 @@
   }
 
   function handleKanaSelect(event) {
-    const clickedKana = event.detail.kana;
-    currentKanaExample = vocabulary.find(word => word.kana.startsWith(clickedKana)) || null;
+    const clickedKana = event.detail;
+    currentKanaExample = vocabulary.find(word => word.kana.startsWith(clickedKana.kana)) || null;
+    bottomSheetTitle = $t('vocabulary_example');
+    bottomSheetContent = {
+      type: 'kana',
+      data: currentKanaExample
+    };
+    showBottomSheet = true;
+  }
+
+  function handleKanjiSelect(event) {
+    const selectedKanji = event.detail;
+    selectedKanjiExample = selectedKanji;
+    bottomSheetTitle = selectedKanji.kanji;
+    bottomSheetContent = {
+      type: 'kanji',
+      data: selectedKanjiExample
+    };
+    showBottomSheet = true;
+  }
+
+  function closeBottomSheet() {
+    showBottomSheet = false;
+    bottomSheetContent = null;
+    currentKanaExample = null;
+    selectedKanjiExample = null;
   }
 
   function handleVocabularyFilterChange(event) {
@@ -93,10 +123,10 @@
     <Navigation on:navigate={handleNavigation} {activeView} />
 
     {#if activeView === 'kana_charts'}
-      <KanaChart kanaData={hiragana} type="hiragana" masteredIds={$masteredHiraganaIds} on:selectKana={handleKanaSelect} selectedExample={currentKanaExample} t={$t} />
-      <KanaChart kanaData={katakana} type="katakana" masteredIds={$masteredKatakanaIds} on:selectKana={handleKanaSelect} selectedExample={currentKanaExample} t={$t} />
+      <KanaChart kanaData={hiragana} type="hiragana" masteredIds={$masteredHiraganaIds} on:selectKana={handleKanaSelect} t={$t} />
+      <KanaChart kanaData={katakana} type="katakana" masteredIds={$masteredKatakanaIds} on:selectKana={handleKanaSelect} t={$t} />
     {:else if activeView === 'kanji_charts'}
-      <KanjiChart masteredIds={$masteredKanjiIds} />
+      <KanjiChart masteredIds={$masteredKanjiIds} on:selectKanji={handleKanjiSelect} />
     {:else if activeView === 'vocabulary_list'}
       <VocabularyFilter themes={allVocabularyThemes} on:filterChange={handleVocabularyFilterChange} translations={$translations} />
       <VocabularyList filterTheme={selectedVocabularyTheme} />
@@ -112,3 +142,38 @@
     <div>Loading translations...</div>
   {/if}
 </main>
+
+<BottomSheet bind:show={showBottomSheet} title={bottomSheetTitle} on:close={closeBottomSheet}>
+    {#if bottomSheetContent && bottomSheetContent.type === 'kana'}
+      {#if bottomSheetContent.data}
+        <div class="vocabulary-example-content">
+          <p><strong>{$t('kana')}:</strong> {bottomSheetContent.data.kana}</p>
+          <p><strong>{$t('romaji')}:</strong> {bottomSheetContent.data.romaji}</p>
+          <p><strong>{$t('meaning')}:</strong> {$t(bottomSheetContent.data.id)}</p>
+        </div>
+      {:else}
+        <p>{$t('no_vocabulary_example_selected')}</p>
+      {/if}
+    {:else if bottomSheetContent && bottomSheetContent.type === 'kanji'}
+      {#if bottomSheetContent.data}
+        <h3>{$t('selected_kanji')}: {bottomSheetContent.data.kanji}</h3>
+        <p><strong>{$t('meaning')}:</strong> {$t(bottomSheetContent.data.meaning)}</p>
+        <p><strong>{$t('onyomi')}:</strong> {bottomSheetContent.data.onyomi.join(', ')}</p>
+        <p><strong>{$t('kunyomi')}:</strong> {bottomSheetContent.data.kunyomi.join(', ')}</p>
+        {#if bottomSheetContent.data.strokeOrderImg}
+          <img src={bottomSheetContent.data.strokeOrderImg} alt="{$t('stroke_order')} {bottomSheetContent.data.kanji}" />
+        {/if}
+        {#if bottomSheetContent.data.examples && bottomSheetContent.data.examples.length > 0}
+          <h4>{$t('examples')}:</h4>
+          <ul>
+            {#each bottomSheetContent.data.examples as exampleId}
+              {@const example = vocabulary.find(v => v.id === exampleId)}
+              {#if example}
+                <li>{example.kana} ({example.romaji}) - {$t(example.en)}</li>
+              {/if}
+            {/each}
+          </ul>
+        {/if}
+      {/if}
+    {/if}
+  </BottomSheet>

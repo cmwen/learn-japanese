@@ -36,11 +36,16 @@
     *   Each entry shows the word in Kana, its Romaji, and its **translation in the currently selected language (English or Traditional Chinese)**.
     *   A flashcard quiz mode, similar to the Kana quiz.
 
-*   **Feature 4: Progress Tracking**
-    *   Use browser `localStorage` to save the user's "mastery" status for each Kana character and vocabulary word.
+*   **Feature 4: Kanji Learning Module**
+    *   Display a grid/chart of common Kanji characters.
+    *   Clicking a character shows its Onyomi, Kunyomi, meaning, and stroke order (SVG).
+    *   Include example vocabulary words for each Kanji.
+
+*   **Feature 5: Progress Tracking**
+    *   Use browser `localStorage` to save the user's "mastery" status for each Kana character, Kanji character, and vocabulary word.
     *   A simple visual indicator (e.g., a progress bar, a colored checkmark on the charts) to show progress.
 
-*   **Feature 5: Internationalization (i18n)**
+*   **Feature 6: Internationalization (i18n)**
     *   A clear language-switching mechanism (e.g., a dropdown or toggle in the header/menu).
     *   The app should attempt to auto-detect the user's browser language on first visit. Default to English if the browser language is not supported.
     *   User's language preference must be saved in `localStorage`.
@@ -61,7 +66,7 @@
 
 **5. Out of Scope (Future Versions)**
 
-*   Kanji characters.
+
 *   Audio pronunciation.
 *   User accounts or cloud synchronization.
 *   Gamification (badges, leaderboards).

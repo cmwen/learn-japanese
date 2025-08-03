@@ -2,18 +2,7 @@
 
 **Theme 1: Expanding the Core Knowledge**
 
-*   **Feature: Kanji Learning Module**
-    *   **Description:** This is the most logical next step. Introduce the first and most essential set of Kanji characters (e.g., the 100-120 characters required for the JLPT N5 level).
-    *   **Details:**
-        *   For each Kanji, display its meaning, On'yomi (Chinese reading), and Kun'yomi (Japanese reading).
-        *   Show animated stroke order diagrams to teach correct writing.
-        *   Provide example vocabulary words using each Kanji.
-    *   **User Value:** Unlocks the next layer of the Japanese language, allowing users to start reading and understanding simple sentences.
-
 *   **Feature: Themed Vocabulary Packs**
-    *   **Description:** Expand the vocabulary beyond the initial ~100 words by offering curated, thematic word packs.
-    *   **Details:** Users could activate packs like "Food & Restaurant," "Shopping," "Transportation," or "Common Anime Phrases."
-    *   **User Value:** Allows for personalized learning paths tailored to a user's specific interests or needs.
 
 **Theme 2: Enhancing the Learning Experience**
 

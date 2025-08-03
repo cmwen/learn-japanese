@@ -25,19 +25,7 @@ fi
 
 # Extract Kanji characters, their Unicode, and target filenames using Python
 echo "Extracting Kanji data from $KANJI_DATA_FILE..."
-KANJI_INFO=$(python3 -c "
-import re
-import json
-
-kanji_data_content = open('$KANJI_DATA_FILE', 'r').read()
-
-# Regex to find kanji and strokeOrderImg.
-matches = re.findall(r\"{.+?kanji: \'([^\"]+)\ecation.+?strokeOrderImg: \'/assets/kanji/([^\"]+)\\'[^}]*?\", kanji_data_content)
-
-for kanji_char, stroke_img_filename in matches:
-    unicode_hex = hex(ord(kanji_char))[2:].zfill(5)
-    print(f\"$kanji_char:$unicode_hex:$stroke_img_filename\")
-")
+KANJI_INFO=$(node --experimental-modules scripts/extract_kanji_data.js)
 
 if [ -z "$KANJI_INFO" ]; then
     echo "Error: No Kanji data found or extracted from $KANJI_DATA_FILE. Please check the file format."

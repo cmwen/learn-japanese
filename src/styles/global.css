@@ -98,3 +98,8 @@ select {
   border: 1px solid var(--card-border);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.mastered {
+  background-color: #e6ffe6 !important; /* Light green for mastered items */
+  border: 1px solid #4CAF50 !important;
+}

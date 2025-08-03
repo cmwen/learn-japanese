@@ -1,14 +1,23 @@
 <script>
   import { t } from '../lib/i18n';
   import { kanjiData } from '../data/kanji';
+  import { vocabulary } from '../data/vocabulary';
+  import { masteryProgress } from '../lib/stores';
 
   // This component will display a grid of Kanji characters.
   // For now, we'll just display the kanji character, onyomi, kunyomi, and meaning.
 
+  export let masteredIds = [];
   let selectedKanji = null;
 
   function selectKanji(kanji) {
     selectedKanji = kanji;
+    masteryProgress.update(progress => {
+      if (!progress.kanji.includes(kanji.id)) {
+        progress.kanji.push(kanji.id);
+      }
+      return progress;
+    });
   }
 </script>
 
@@ -16,7 +25,7 @@
   <h2>{$t('kanji_chart')}</h2>
   <div class="kanji-grid">
     {#each kanjiData as kanji}
-      <div class="kanji-item" on:click={() => selectKanji(kanji)}>
+      <div class="kanji-item {masteredIds.includes(kanji.id) ? 'mastered' : ''}" on:click={() => selectKanji(kanji)}>
         <div class="kanji-character">{kanji.kanji}</div>
         <div class="kanji-readings">
           <p>On: {kanji.onyomi.join(', ')}</p>
@@ -36,7 +45,17 @@
       {#if selectedKanji.strokeOrderImg}
         <img src={selectedKanji.strokeOrderImg} alt="{$t('stroke_order')} {selectedKanji.kanji}" />
       {/if}
-      <!-- Add linked vocabulary examples here later -->
+      {#if selectedKanji.examples && selectedKanji.examples.length > 0}
+        <h4>{$t('examples')}:</h4>
+        <ul>
+          {#each selectedKanji.examples as exampleId}
+            {@const example = vocabulary.find(v => v.id === exampleId)}
+            {#if example}
+              <li>{example.kana} ({example.romaji}) - {$t(example.en)}</li>
+            {/if}
+          {/each}
+        </ul>
+      {/if}
     </div>
   {/if}
 </div>

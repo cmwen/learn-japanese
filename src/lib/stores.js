@@ -19,7 +19,8 @@ export const language = createPersistentStore('kanjiGo_language', 'en');
 export const masteryProgress = createPersistentStore('kanjiGo_masteryProgress', {
   hiragana: [],
   katakana: [],
-  vocabulary: []
+  vocabulary: [],
+  kanji: []
 });
 
 export const theme = createPersistentStore('kanjiGo_theme', 'system');

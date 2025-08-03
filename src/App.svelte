@@ -75,6 +75,7 @@
 
   const masteredHiraganaIds = derived(masteryProgress, $masteryProgress => $masteryProgress.hiragana);
   const masteredKatakanaIds = derived(masteryProgress, $masteryProgress => $masteryProgress.katakana);
+  const masteredKanjiIds = derived(masteryProgress, $masteryProgress => $masteryProgress.kanji);
 
   // Add console logs for debugging
   $: if ($translationsLoaded) {
@@ -95,7 +96,7 @@
       <KanaChart kanaData={hiragana} type="hiragana" masteredIds={$masteredHiraganaIds} on:selectKana={handleKanaSelect} selectedExample={currentKanaExample} t={$t} />
       <KanaChart kanaData={katakana} type="katakana" masteredIds={$masteredKatakanaIds} on:selectKana={handleKanaSelect} selectedExample={currentKanaExample} t={$t} />
     {:else if activeView === 'kanji_charts'}
-      <KanjiChart />
+      <KanjiChart masteredIds={$masteredKanjiIds} />
     {:else if activeView === 'vocabulary_list'}
       <VocabularyFilter themes={allVocabularyThemes} on:filterChange={handleVocabularyFilterChange} translations={$translations} />
       <VocabularyList filterTheme={selectedVocabularyTheme} />

@@ -25,9 +25,12 @@ To maintain clarity and separation of concerns, the project will use the followi
 │   ├── manifest.json
 │   ├── service-worker.js
 │   └── assets/
-│       └── icons/
-│           ├── icon-192x192.png
-│           └── icon-512x512.png
+│       ├── icons/
+│       │   ├── icon-192x192.png
+│       │   └── icon-512x512.png
+│       └── kanji/          # Kanji stroke order SVG files
+│           ├── ichi_stroke.svg
+│           └── ... (other kanji SVGs)
 │
 ├── src/
 │   ├── main.js             # Svelte application entry point
@@ -75,6 +78,14 @@ To maintain clarity and separation of concerns, the project will use the followi
         { id: 'h_a', type: 'hiragana', kana: 'あ', romaji: 'a' }
         ```
 
+*   **Kanji Data (`src/data/kanji.js`):**
+    *   An array named `kanjiData`.
+    *   Each object will contain the kanji character, its readings, meaning, and a reference to its stroke order SVG.
+        ```javascript
+        // Example
+        { id: 'k_one', kanji: '一', onyomi: ['ichi'], kunyomi: ['hito(tsu)'], meaning: 'One', examples: ['v_one'], strokeOrderImg: '/assets/kanji/ichi_stroke.svg' }
+        ```
+
 *   **Vocabulary Data (`src/data/vocabulary.js`):**
     *   A single array named `vocabulary`.
     *   Each object will contain the word and all its translations:
@@ -98,7 +109,8 @@ To maintain clarity and separation of concerns, the project will use the followi
           "mastery": {
             "hiragana": ["h_a", "h_i", "h_u"], // Array of mastered item IDs
             "katakana": ["k_a"],
-            "vocabulary": ["v_konnichiwa"]
+            "vocabulary": ["v_konnichiwa"],
+            "kanji": ["k_one"]
           }
         }
         ```

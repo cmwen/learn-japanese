@@ -1,0 +1,26 @@
+{
+  "name": "Gemini CLI in Codespaces",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
+    }
+  },
+  "postCreateCommand": "npm install && npm install -g @gemini/cli",
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "README.md"
+      ]
+    },
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "GitHub.codespaces"
+      ]
+    }
+  }
+}

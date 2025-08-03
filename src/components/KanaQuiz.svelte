@@ -9,10 +9,15 @@
   let quizDeck = [];
   let currentCard = null;
   let flipped = false;
+  let quizType = 'mixed'; // 'hiragana', 'katakana', or 'mixed'
 
   onMount(() => {
     startQuiz();
   });
+
+  $: if (quizType) {
+    startQuiz();
+  }
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -23,7 +28,15 @@
   }
 
   function startQuiz() {
-    quizDeck = shuffleArray([...allKana]);
+    let selectedKana = [];
+    if (quizType === 'hiragana') {
+      selectedKana = hiragana;
+    } else if (quizType === 'katakana') {
+      selectedKana = katakana;
+    } else {
+      selectedKana = allKana;
+    }
+    quizDeck = shuffleArray([...selectedKana]);
     nextCard();
   }
 
@@ -67,6 +80,21 @@
 <div class="kana-quiz">
   <h2>{$t('quiz')}</h2>
 
+  <div class="quiz-type-selection">
+    <label>
+      <input type="radio" name="quizType" value="hiragana" bind:group={quizType}>
+      {$t('hiragana_quiz')}
+    </label>
+    <label>
+      <input type="radio" name="quizType" value="katakana" bind:group={quizType}>
+      {$t('katakana_quiz')}
+    </label>
+    <label>
+      <input type="radio" name="quizType" value="mixed" bind:group={quizType}>
+      {$t('mixed_quiz')}
+    </label>
+  </div>
+
   {#if currentCard}
     <Flashcard kana={currentCard} bind:flipped={flipped} on:flip={handleFlip} />
 
@@ -90,6 +118,17 @@
     border-radius: 8px;
     background-color: var(--card-background);
     text-align: center;
+  }
+  .quiz-type-selection {
+    margin-bottom: 20px;
+  }
+  .quiz-type-selection label {
+    margin: 0 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+  }
+  .quiz-type-selection input[type="radio"] {
+    margin-right: 5px;
   }
   .quiz-controls button {
     padding: 10px 20px;

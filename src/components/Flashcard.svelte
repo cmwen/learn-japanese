@@ -12,7 +12,14 @@
   }
 </script>
 
-<div class="flashcard" on:click={toggleFlip} class:flipped={flipped}>
+<div
+  class="flashcard"
+  on:click={toggleFlip}
+  on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') toggleFlip(); }}
+  class:flipped={flipped}
+  role="button"
+  tabindex="0"
+>
   <div class="flashcard-inner">
     <div class="flashcard-front">
       <span class="kana-char">{kana.kana}</span>

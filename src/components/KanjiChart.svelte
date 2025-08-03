@@ -25,7 +25,13 @@
   <h2>{$t('kanji_chart')}</h2>
   <div class="kanji-grid">
     {#each kanjiData as kanji}
-      <div class="kanji-item {masteredIds.includes(kanji.id) ? 'mastered' : ''}" on:click={() => selectKanji(kanji)}>
+      <div
+        class="kanji-item {masteredIds.includes(kanji.id) ? 'mastered' : ''}"
+        on:click={() => selectKanji(kanji)}
+        on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') selectKanji(kanji); }}
+        role="button"
+        tabindex="0"
+      >
         <div class="kanji-character">{kanji.kanji}</div>
         <div class="kanji-readings">
           <p>On: {kanji.onyomi.join(', ')}</p>

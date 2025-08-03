@@ -18,7 +18,14 @@
   <h2>{type === 'hiragana' ? t('hiragana_chart') : t('katakana_chart')}</h2>
   <div class="grid">
     {#each kanaData as kana (kana.id)}
-      <div class="kana-item" class:mastered={masteredIds.includes(kana.id)} on:click={() => selectKana(kana)}>
+      <div
+        class="kana-item"
+        class:mastered={masteredIds.includes(kana.id)}
+        on:click={() => selectKana(kana)}
+        on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') selectKana(kana); }}
+        role="button"
+        tabindex="0"
+      >
         <span class="kana-char">{kana.kana}</span>
         <span class="romaji">{kana.romaji}</span>
       </div>

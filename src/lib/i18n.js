@@ -12,7 +12,7 @@ export async function initI18n() {
 
 export async function loadTranslations(lang) {
   try {
-    const response = await fetch(`/locales/${lang}.json`);
+    const response = await fetch(`${import.meta.env.BASE_URL}locales/${lang}.json`);
     if (!response.ok) {
       throw new Error(`Could not load translations for ${lang}`);
     }
@@ -20,7 +20,7 @@ export async function loadTranslations(lang) {
     translations.set(newTranslations);
   } catch (error) {
     console.error('Error loading translations:', error);
-    const response = await fetch('/locales/en.json');
+    const response = await fetch(`${import.meta.env.BASE_URL}locales/en.json`);
     const newTranslations = await response.json();
     translations.set(newTranslations);
     language.set('en');

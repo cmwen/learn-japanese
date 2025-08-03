@@ -11,5 +11,9 @@
   "language": "Language",
   "quiz_finished": "Quiz Finished!",
   "quiz_complete": "Quiz Complete!",
-  "start_new_quiz": "Start New Quiz"
+  "start_new_quiz": "Start New Quiz",
+  "theme": "Theme",
+  "theme_system": "System",
+  "theme_light": "Light",
+  "theme_dark": "Dark"
 }

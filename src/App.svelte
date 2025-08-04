@@ -127,7 +127,7 @@
 
     {#if activeView.startsWith('learn')}
       <Learn />
-    {:else if activeView === 'explore'}
+    {:else if activeView.startsWith('explore')}
       <Explore />
     {:else if activeView === 'kana_charts'}
       <KanaChart kanaData={hiragana} type="hiragana" masteredIds={$masteredHiraganaIds} on:selectKana={handleKanaSelect} t={$t} />

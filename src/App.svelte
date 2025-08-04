@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import { t, translationsLoaded, translations } from './lib/i18n'; // Import translationsLoaded and translations
+  import { t, translationsLoaded, translations, initI18n } from './lib/i18n'; // Import translationsLoaded and translations
   import KanaChart from './components/KanaChart.svelte';
   import KanjiChart from './components/KanjiChart.svelte'; // Import KanjiChart
   
@@ -11,10 +11,12 @@
   import VocabularyList from './components/VocabularyList.svelte';
   import VocabularyFilter from './components/VocabularyFilter.svelte'; // Import VocabularyFilter
   import KanaQuiz from './components/KanaQuiz.svelte';
-  import ProgressDisplay from './components/ProgressDisplay.svelte'; // Import ProgressDisplay
+  import Progress from './components/Progress.svelte'; // Import Progress
   import Settings from './components/Settings.svelte'; // Import Settings
   import Navigation from './components/Navigation.svelte';
   import BottomSheet from './components/BottomSheet.svelte';
+  import Learn from './components/Learn.svelte'; // Import Learn component
+  import Explore from './components/Explore.svelte'; // Import Explore component
   
   
         import { masteryProgress, gamificationProgress } from './lib/stores';
@@ -23,7 +25,10 @@
   let currentKanaExample = null; // New reactive state for selected Kana example
   let selectedKanjiExample = null; // New reactive state for selected Kanji example
 
-  let activeView = 'kana_charts'; // Default view
+  import { currentRoute, navigate } from './lib/router';
+  let activeView = 'learn'; // Default view
+
+  $: activeView = $currentRoute.substring(1) || 'learn'; // Update activeView based on currentRoute
   let selectedVocabularyTheme = 'all'; // New state for vocabulary filter
 
   let showBottomSheet = false;
@@ -64,9 +69,7 @@
     });
   });
 
-  function handleNavigation(event) {
-    activeView = event.detail;
-  }
+  
 
   function handleKanaSelect(event) {
     const clickedKana = event.detail;
@@ -120,9 +123,13 @@
 
     
 
-    <Navigation on:navigate={handleNavigation} {activeView} />
+                <Navigation />
 
-    {#if activeView === 'kana_charts'}
+    {#if activeView.startsWith('learn')}
+      <Learn />
+    {:else if activeView === 'explore'}
+      <Explore />
+    {:else if activeView === 'kana_charts'}
       <KanaChart kanaData={hiragana} type="hiragana" masteredIds={$masteredHiraganaIds} on:selectKana={handleKanaSelect} t={$t} />
       <KanaChart kanaData={katakana} type="katakana" masteredIds={$masteredKatakanaIds} on:selectKana={handleKanaSelect} t={$t} />
     {:else if activeView === 'kanji_charts'}
@@ -132,7 +139,7 @@
       <VocabularyList filterTheme={selectedVocabularyTheme} />
     
     {:else if activeView === 'progress'}
-      <ProgressDisplay t={$t} />
+      <Progress />
     {:else if activeView === 'quiz'}
       <KanaQuiz />
     {:else if activeView === 'settings'}

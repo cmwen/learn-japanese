@@ -4,7 +4,9 @@ A Progressive Web App (PWA) for learning basic Japanese (Hiragana, Katakana, and
 
 This project was developed with the assistance of Google Gemini. For more details on the development process, see [GEMINI.md](GEMINI.md).
 
-## Features (V1)
+## Features
+
+### V1 Features
 
 *   **Kana Learning Module:** Interactive charts for Hiragana and Katakana.
 *   **Kana Flashcard Quiz:** Test your knowledge with flashcards.
@@ -12,6 +14,14 @@ This project was developed with the assistance of Google Gemini. For more detail
 *   **Progress Tracking:** Track your mastery of Kana characters.
 *   **Multilingual Support:** Available in English and Traditional Chinese.
 *   **Offline-First:** Works completely offline after the initial visit.
+
+### V3 Features (In Progress)
+
+*   **Enhanced Navigation:** New top-level navigation for Learn, Explore, and Progress sections with Svelte routing.
+*   **Grammar Learning Section:** Structured content for Japanese grammar topics, including particles, verb conjugations, and adjectives.
+*   **Cultural Exploration Section:** Articles on Japanese culture and traditions.
+*   **Data Management:** Functionality to export and import user progress data (mastery, gamification) and clear all local data.
+*   **Markdown Rendering:** Integration of `marked` and `svelte-markdown` for rich content display in learning and cultural sections.
 
 ## Technologies Used
 

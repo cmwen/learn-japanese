@@ -10,7 +10,7 @@ Gemini acted as a multi-faceted assistant throughout the project, fulfilling rol
 *   **Business Analyst/Solution Designer:** Translating product requirements into a technical design specification, including architecture, file structure, and data models.
 *   **Experienced Svelte Developer:** Providing guidance on technology stack choices (Svelte/Vite), identifying potential challenges, and debugging implementation issues.
 *   **Implementation Assistant:** Generating boilerplate code, setting up project structure, and assisting with component creation and integration.
-*   **Quality Assurance:** Performing Playwright-based verification of implemented features against requirements.
+*   **Quality Assurance:** Performing Playwright-based verification of implemented features against requirements. When a developer starts implementation, the local development server can be assumed to be running at `http://127.0.0.1:5173/`, and Playwright tool can be used to inspect the results.
 
 ## Key Contributions
 

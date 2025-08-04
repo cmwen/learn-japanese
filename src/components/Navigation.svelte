@@ -1,24 +1,23 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
+  import { navigate, currentRoute } from '../lib/router';
   import { t } from '../lib/i18n';
 
-  const dispatch = createEventDispatcher();
+  $: activeView = $currentRoute.substring(1) || 'learn';
 
-  export let activeView = 'kana_charts'; // Default active view
-
-  function setView(view) {
-    activeView = view;
-    dispatch('navigate', view);
+  function setView(path) {
+    navigate(path);
   }
 </script>
 
 <nav>
-  <button on:click={() => setView('kana_charts')} class:active={activeView === 'kana_charts'}>{$t('hiragana_chart')}</button>
-  <button on:click={() => setView('kanji_charts')} class:active={activeView === 'kanji_charts'}>{$t('kanji_chart')}</button>
-  <button on:click={() => setView('vocabulary_list')} class:active={activeView === 'vocabulary_list'}>{$t('vocabulary_list')}</button>
-  <button on:click={() => setView('progress')} class:active={activeView === 'progress'}>{$t('progress')}</button>
-  <button on:click={() => setView('quiz')} class:active={activeView === 'quiz'}>{$t('quiz')}</button>
-  <button on:click={() => setView('settings')} class:active={activeView === 'settings'}>{$t('settings')}</button>
+  <button on:click={() => setView('/learn')} class:active={activeView === 'learn'}>{$t('learn')}</button>
+  <button on:click={() => setView('/explore')} class:active={activeView === 'explore'}>{$t('explore')}</button>
+  <button on:click={() => setView('/progress')} class:active={activeView === 'progress'}>{$t('progress')}</button>
+  <button on:click={() => setView('/kana_charts')} class:active={activeView === 'kana_charts'}>{$t('hiragana_chart')}</button>
+  <button on:click={() => setView('/kanji_charts')} class:active={activeView === 'kanji_charts'}>{$t('kanji_chart')}</button>
+  <button on:click={() => setView('/vocabulary_list')} class:active={activeView === 'vocabulary_list'}>{$t('vocabulary_list')}</button>
+  <button on:click={() => setView('/quiz')} class:active={activeView === 'quiz'}>{$t('quiz')}</button>
+  <button on:click={() => setView('/settings')} class:active={activeView === 'settings'}>{$t('settings')}</button>
 </nav>
 
 <style>

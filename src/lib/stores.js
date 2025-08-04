@@ -1,40 +1,33 @@
 import { writable } from 'svelte/store';
+import localforage from 'localforage';
 
-// Function to create a writable store that persists to localStorage
+// Function to create a writable store that persists to IndexedDB using localforage
 function createPersistentStore(key, startValue) {
-  const storedValue = localStorage.getItem(key);
-  console.log(`createPersistentStore: key=${key}, storedValue=${storedValue}`);
-  let initialValue;
+  const { subscribe, set, update } = writable(startValue);
 
-  if (typeof startValue !== 'object' || startValue === null) {
-    // Handle primitive types (string, number, boolean)
-    initialValue = storedValue ? JSON.parse(storedValue) : startValue;
-  } else {
-    // Handle object types
-    initialValue = startValue; // Start with the default structure
-    if (storedValue) {
-      try {
-        const parsedValue = JSON.parse(storedValue);
-        console.log(`createPersistentStore: parsedValue=${JSON.stringify(parsedValue)}`);
-        // Merge parsedValue into initialValue, ensuring default properties are kept
-        for (const prop in initialValue) {
-          if (Object.prototype.hasOwnProperty.call(parsedValue, prop)) {
-            initialValue[prop] = parsedValue[prop];
-          }
-        }
-      } catch (e) {
-        console.error("Error parsing localStorage item for key:", key, e);
-        // Fallback to startValue if parsing fails
-        initialValue = startValue;
+  localforage.getItem(key).then(storedValue => {
+    if (storedValue !== null && storedValue !== undefined) {
+      if (Array.isArray(startValue)) {
+        // If startValue is an array, ensure storedValue is also an array. Otherwise, use startValue.
+        set(Array.isArray(storedValue) ? storedValue : startValue);
+      } else if (typeof startValue === 'object' && startValue !== null && typeof storedValue === 'object' && storedValue !== null) {
+        // Merge stored object with default, ensuring new properties are added
+        set({ ...startValue, ...storedValue });
+      } else {
+        set(storedValue);
       }
+    } else {
+      // If no stored value, initialize with startValue
+      set(startValue);
     }
-  }
-  console.log(`createPersistentStore: initialValue=${JSON.stringify(initialValue)}`);
-
-  const { subscribe, set, update } = writable(initialValue);
+  }).catch(err => {
+    console.error(`Error reading from IndexedDB for key ${key}:`, err);
+  });
 
   subscribe(value => {
-    localStorage.setItem(key, JSON.stringify(value));
+    localforage.setItem(key, value).catch(err => {
+      console.error(`Error writing to IndexedDB for key ${key}:`, err);
+    });
   });
 
   return { subscribe, set, update };
@@ -57,3 +50,7 @@ export const gamificationProgress = createPersistentStore('kanjiGo_gamificationP
   lastStudyDate: null, // ISO string 'YYYY-MM-DD'
   totalPoints: 0,
 });
+
+export const notes = createPersistentStore('kanjiGo_notes', []); // New store for notes
+
+export const furiganaVisibility = createPersistentStore('kanjiGo_furiganaVisibility', true);

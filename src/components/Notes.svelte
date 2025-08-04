@@ -24,7 +24,7 @@
 
   function saveNote() {
     if (!noteTitle.trim() || !noteContent.trim()) {
-      alert(t('note_empty_warning'));
+      alert($t('note_empty_warning'));
       return;
     }
 
@@ -53,7 +53,7 @@
   }
 
   function deleteNote(id) {
-    if (confirm(t('confirm_delete_note'))) {
+    if (confirm($t('confirm_delete_note'))) {
       notes.update(currentNotes => currentNotes.filter(n => n.id !== id));
     }
   }
@@ -88,9 +88,9 @@
 <div class="notes-container">
   {#if showEditor}
     <div class="note-editor">
-      <h3>{currentNote ? t('edit_note') : t('new_note')}</h3>
-      <input type="text" bind:value={noteTitle} placeholder={t('note_title_placeholder')} />
-      <textarea bind:value={noteContent} placeholder={t('note_content_placeholder')}></textarea>
+      <h3>{currentNote ? $t('edit_note') : $t('new_note')}</h3>
+      <input type="text" bind:value={noteTitle} placeholder={$t('note_title_placeholder')} />
+      <textarea bind:value={noteContent} placeholder={$t('note_content_placeholder')}></textarea>
       <div class="editor-actions">
         <button on:click={saveNote}>{$t('save_note')}</button>
         <button on:click={cancelEdit} class="cancel-button">{$t('cancel')}</button>

@@ -391,4 +391,84 @@ export const vocabulary = [
   { id: 'v_toramaana', kana: 'トラマナ', romaji: 'toramaana', en: 'Toramana (no encounters)', 'zh-TW': '特拉馬納 (不遇敵)', themes: ['fantasy', 'dragon_quest'] },
   { id: 'v_mahokanta', kana: 'マホカンタ', romaji: 'mahokanta', en: 'Mahokanta (reflect)', 'zh-TW': '馬霍坎塔 (反射)', themes: ['fantasy', 'dragon_quest'] },
   { id: 'v_shinsoku', kana: 'しんそく', romaji: 'shinsoku', en: 'Shinsoku (divine speed)', 'zh-TW': '神速', themes: ['fantasy', 'dragon_quest'] },
+  
+  // --- ONE PIECE: More pirates from other crews ---
+  // Red-Hair Pirates
+  { id: 'v_benn_beckman', kana: 'ベン・ベックマン', romaji: 'ben bekkuu man', en: 'Benn Beckman', 'zh-TW': '本・貝克曼', themes: ['people', 'one_piece'] },
+  { id: 'v_yasopp', kana: 'ヤソップ', romaji: 'yasoppu', en: 'Yasopp', 'zh-TW': '耶穌布', themes: ['people', 'one_piece'] },
+  { id: 'v_lucky_roux', kana: 'ラッキー・ルウ', romaji: 'rakkii ruu', en: 'Lucky Roux', 'zh-TW': '拉基・路', themes: ['people', 'one_piece'] },
+  // Whitebeard Pirates
+  { id: 'v_whitebeard', kana: 'しろひげ', romaji: 'shirohige', en: 'Whitebeard', 'zh-TW': '白鬍子', themes: ['people', 'one_piece'] },
+  { id: 'v_marco', kana: 'マルコ', romaji: 'maruko', en: 'Marco', 'zh-TW': '馬可', themes: ['people', 'one_piece'] },
+  { id: 'v_jozu', kana: 'ジョズ', romaji: 'jozu', en: 'Jozu', 'zh-TW': '喬茲', themes: ['people', 'one_piece'] },
+  // Big Mom Pirates
+  { id: 'v_big_mom', kana: 'ビッグマム', romaji: 'biggu mamu', en: 'Big Mom', 'zh-TW': '夏洛特・玲玲', themes: ['people', 'one_piece'] },
+  { id: 'v_katakuri', kana: 'カタクリ', romaji: 'katakuri', en: 'Katakuri', 'zh-TW': '卡塔庫栗', themes: ['people', 'one_piece'] },
+  { id: 'v_perospero', kana: 'ペロスペロー', romaji: 'perosuperoo', en: 'Perospero', 'zh-TW': '佩洛斯佩羅', themes: ['people', 'one_piece'] },
+  // Beasts Pirates
+  { id: 'v_kaido', kana: 'カイドウ', romaji: 'kaidou', en: 'Kaido', 'zh-TW': '凱多', themes: ['people', 'one_piece'] },
+  { id: 'v_king', kana: 'キング', romaji: 'kingu', en: 'King', 'zh-TW': 'King', themes: ['people', 'one_piece'] },
+  { id: 'v_queen', kana: 'クイーン', romaji: 'kuiin', en: 'Queen', 'zh-TW': 'Queen', themes: ['people', 'one_piece'] },
+  { id: 'v_jack', kana: 'ジャック', romaji: 'jakku', en: 'Jack', 'zh-TW': 'Jack', themes: ['people', 'one_piece'] },
+  // Blackbeard Pirates
+  { id: 'v_blackbeard', kana: 'ブラックビアード', romaji: 'burakku biaado', en: 'Blackbeard', 'zh-TW': '黑鬍子', themes: ['people', 'one_piece'] },
+  { id: 'v_shiryu', kana: 'シリュウ', romaji: 'shiryu', en: 'Shiryu', 'zh-TW': '希留', themes: ['people', 'one_piece'] },
+  { id: 'v_lafitte', kana: 'ラフィット', romaji: 'rafitto', en: 'Lafitte', 'zh-TW': '拉斐特', themes: ['people', 'one_piece'] },
+  // Heart Pirates
+  { id: 'v_law', kana: 'トラファルガー・ロー', romaji: 'torafarugaa roo', en: 'Trafalgar Law', 'zh-TW': '特拉法爾加・羅', themes: ['people', 'one_piece'] },
+  { id: 'v_bepo', kana: 'ベポ', romaji: 'bepo', en: 'Bepo', 'zh-TW': '貝波', themes: ['people', 'one_piece'] },
+  // Kid Pirates
+  { id: 'v_kid', kana: 'ユースタス・キッド', romaji: 'yuusutasu kiddo', en: 'Eustass Kid', 'zh-TW': '尤斯塔斯・基德', themes: ['people', 'one_piece'] },
+  { id: 'v_killer', kana: 'キラー', romaji: 'kiraa', en: 'Killer', 'zh-TW': '基拉', themes: ['people', 'one_piece'] },
+  // Donquixote Pirates
+  { id: 'v_doflamingo', kana: 'ドフラミンゴ', romaji: 'dofuramingo', en: 'Doflamingo', 'zh-TW': '多佛朗明哥', themes: ['people', 'one_piece'] },
+  { id: 'v_vergo', kana: 'ヴェルゴ', romaji: 'verugo', en: 'Vergo', 'zh-TW': '維爾戈', themes: ['people', 'one_piece'] },
+  { id: 'v_pica', kana: 'ピーカ', romaji: 'piika', en: 'Pica', 'zh-TW': '皮卡', themes: ['people', 'one_piece'] },
+  // Arlong Pirates
+  { id: 'v_arlong', kana: 'アーロン', romaji: 'aaron', en: 'Arlong', 'zh-TW': '阿龍', themes: ['people', 'one_piece'] },
+  { id: 'v_hachi', kana: 'ハチ', romaji: 'hachi', en: 'Hachi', 'zh-TW': '哈奇', themes: ['people', 'one_piece'] },
+  // Roger Pirates
+  { id: 'v_gol_d_roger', kana: 'ゴール・D・ロジャー', romaji: 'gooru di rojaa', en: 'Gol D. Roger', 'zh-TW': '哥爾・D・羅傑', themes: ['people', 'one_piece'] },
+  { id: 'v_rayleigh', kana: 'レイリー', romaji: 'reirii', en: 'Silvers Rayleigh', 'zh-TW': '希爾巴斯・雷利', themes: ['people', 'one_piece'] },
+  { id: 'v_scopper_gaban', kana: 'スコッパー・ギャバン', romaji: 'sukoppaa gyaban', en: 'Scopper Gaban', 'zh-TW': '斯科伯・加邦', themes: ['people', 'one_piece'] },
+
+  // --- DRAGON QUEST: More monsters ---
+  { id: 'v_slime_beth', kana: 'スライムベス', romaji: 'suraimu besu', en: 'She-Slime', 'zh-TW': '赤色史萊姆', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_metal_slime', kana: 'メタルスライム', romaji: 'metaru suraimu', en: 'Metal Slime', 'zh-TW': '金屬史萊姆', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_king_slime', kana: 'キングスライム', romaji: 'kingu suraimu', en: 'King Slime', 'zh-TW': '史萊姆王', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_liquid_metal_slime', kana: 'はぐれメタル', romaji: 'hagure metaru', en: 'Liquid Metal Slime', 'zh-TW': '流浪金屬史萊姆', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_dracky', kana: 'ドラキー', romaji: 'dorakii', en: 'Dracky', 'zh-TW': '蝙蝠怪', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_drackyma', kana: 'ドラキーマ', romaji: 'dorakiima', en: 'Drackyma', 'zh-TW': '大蝙蝠怪', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_golem', kana: 'ゴーレム', romaji: 'gooremu', en: 'Golem', 'zh-TW': '魔像', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_chimera', kana: 'キメラ', romaji: 'kimera', en: 'Chimera', 'zh-TW': '奇美拉', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_slime_knight', kana: 'スライムナイト', romaji: 'suraimu naito', en: 'Slime Knight', 'zh-TW': '史萊姆騎士', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_restless_armor', kana: 'さまようよろい', romaji: 'samayou yoroi', en: 'Restless Armor', 'zh-TW': '徘徊鎧甲', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_heal_slime', kana: 'ホイミスライム', romaji: 'hoimi suraimu', en: 'Healslime', 'zh-TW': '治療史萊姆', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_bubble_slime', kana: 'バブルスライム', romaji: 'baburu suraimu', en: 'Bubble Slime', 'zh-TW': '毒史萊姆', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_ghost', kana: 'ゴースト', romaji: 'goosuto', en: 'Ghost', 'zh-TW': '幽靈', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_skeleton', kana: 'がいこつ', romaji: 'gaikotsu', en: 'Skeleton', 'zh-TW': '骷髏', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_mimic', kana: 'ミミック', romaji: 'mimikku', en: 'Mimic', 'zh-TW': '寶箱怪', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_killer_machine', kana: 'キラーマシン', romaji: 'kiraa mashin', en: 'Killer Machine', 'zh-TW': '殺人機器', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_hammerhood', kana: 'おおきづち', romaji: 'ookizuchi', en: 'Hammerhood', 'zh-TW': '大木槌', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_sabercub', kana: 'ベビーパンサー', romaji: 'bebii pansa', en: 'Sabercub', 'zh-TW': '幼年劍齒虎', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_orc', kana: 'オーク', romaji: 'ooku', en: 'Orc', 'zh-TW': '半獸人', themes: ['animals', 'dragon_quest'] },
+  { id: 'v_cyclops', kana: 'サイクロプス', romaji: 'saikuropusu', en: 'Cyclops', 'zh-TW': '獨眼巨人', themes: ['animals', 'dragon_quest'] },
+
+  // --- DRAGON QUEST: Common menu/battle commands ---
+  { id: 'v_cmd_tatakau', kana: 'たたかう', romaji: 'tatakau', en: 'Fight', 'zh-TW': '戰鬥', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_bougyo', kana: 'ぼうぎょ', romaji: 'bougyo', en: 'Defend', 'zh-TW': '防禦', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_jumon', kana: 'じゅもん', romaji: 'jumon', en: 'Spells', 'zh-TW': '咒文', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_tokugi', kana: 'とくぎ', romaji: 'tokugi', en: 'Skills', 'zh-TW': '特技', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_dougu', kana: 'どうぐ', romaji: 'dougu', en: 'Items', 'zh-TW': '道具', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_nigeru', kana: 'にげる', romaji: 'nigeru', en: 'Run', 'zh-TW': '逃跑', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_sakusen', kana: 'さくせん', romaji: 'sakusen', en: 'Tactics', 'zh-TW': '作戰', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_hanasu', kana: 'はなす', romaji: 'hanasu', en: 'Talk', 'zh-TW': '交談', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_shiraberu', kana: 'しらべる', romaji: 'shiraberu', en: 'Search', 'zh-TW': '調查', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_tsuyosa', kana: 'つよさ', romaji: 'tsuyosa', en: 'Status', 'zh-TW': '狀態', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_soubi', kana: 'そうび', romaji: 'soubi', en: 'Equipment', 'zh-TW': '裝備', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_tsukau', kana: 'つかう', romaji: 'tsukau', en: 'Use', 'zh-TW': '使用', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_irekae', kana: 'いれかえ', romaji: 'irekae', en: 'Swap', 'zh-TW': '更換', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_narabikae', kana: 'ならびかえ', romaji: 'narabikae', en: 'Reorder', 'zh-TW': '重新排列', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_save', kana: 'セーブ', romaji: 'seebu', en: 'Save', 'zh-TW': '存檔', themes: ['dragon_quest', 'commands'] },
+  { id: 'v_cmd_load', kana: 'ロード', romaji: 'roodo', en: 'Load', 'zh-TW': '讀檔', themes: ['dragon_quest', 'commands'] },
 ];

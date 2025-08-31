@@ -3,7 +3,7 @@
   import ThemeSwitcher from './ThemeSwitcher.svelte';
   import LanguageSwitcher from './LanguageSwitcher.svelte';
   import { exportUserData, importUserData, clearUserData } from '../lib/utils';
-  import { furiganaVisibility } from '../lib/stores';
+  import { furiganaVisibility, selectedInterests } from '../lib/stores';
   import { get } from 'svelte/store';
 
   let fileInput;
@@ -57,6 +57,20 @@
       alert(get(t)('data_cleared'));
     }
   }
+
+  const interestOptions = [
+    { key: 'one_piece', labelKey: 'topic_one_piece' },
+    { key: 'dragon_quest', labelKey: 'topic_dragon_quest' },
+    { key: 'zelda', labelKey: 'topic_zelda' }
+  ];
+
+  function toggleInterest(key) {
+    selectedInterests.update(list => {
+      const set = new Set(list || []);
+      if (set.has(key)) set.delete(key); else set.add(key);
+      return Array.from(set);
+    });
+  }
 </script>
 
 <div class="settings-page">
@@ -77,6 +91,19 @@
     <div class="setting-item">
       <label for="furigana-toggle">{$t('show_furigana')}</label>
       <input type="checkbox" id="furigana-toggle" bind:checked={$furiganaVisibility} />
+    </div>
+  </section>
+
+  <section class="setting-section" aria-labelledby="interests-heading">
+    <h3 id="interests-heading">{$t('interests')}</h3>
+    <p>{$t('interests_description')}</p>
+    <div class="interests-grid">
+      {#each interestOptions as opt}
+        <label class="interest-item">
+          <input type="checkbox" checked={$selectedInterests.includes(opt.key)} on:change={() => toggleInterest(opt.key)} />
+          <span>{$t(opt.labelKey)}</span>
+        </label>
+      {/each}
     </div>
   </section>
 
@@ -114,5 +141,19 @@
 
   h2, h3 {
     color: var(--text-color);
+  }
+
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .interest-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
   }
 </style>

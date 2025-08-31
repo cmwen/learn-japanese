@@ -161,6 +161,32 @@ To maintain clarity and separation of concerns, the project will use the followi
 *   **Deployment (GitHub Pages):**
     *   The application will be automatically deployed to GitHub Pages using GitHub Actions.
     *   A workflow file (`.github/workflows/deploy.yml`) will be configured to:
+---
+
+## V3.1: Interest-Based Personalization (Tech Design)
+
+Overview: Allow users to pick topics (One Piece, Dragon Quest, Zelda) and bias example selection and lists toward those themes.
+
+Data model:
+- Extend vocabulary items' `themes` to include topic tags: `one_piece`, `dragon_quest`, `zelda`.
+- No schema change to `kanjiData`; examples remain by vocabulary id.
+
+State/persistence:
+- New persistent store in `src/lib/stores.js`:
+    - `selectedInterests = createPersistentStore('kanjiGo_selectedInterests', [])` (array of strings)
+- Include `selectedInterests` in export/import/clear in `src/lib/utils.js`.
+
+Selection behavior:
+- Kana select -> pick a vocabulary example whose `kana` startsWith selected kana and which includes at least one selected interest theme; if none, fall back to first matching generic.
+- Kanji bottom sheet examples remain the same, but when showing example listing, consider sorting examples: examples with any selected interest theme first.
+
+UI:
+- Settings: add an Interests section with three checkboxes bound to `selectedInterests`.
+- i18n: add keys for labels and topic names. Use `$t('interests')`, `$t('topic_one_piece')`, `$t('topic_dragon_quest')`, `$t('topic_zelda')`.
+
+Accessibility & offline:
+- No network calls; all data is local.
+- Controls are standard inputs with labels for keyboard/screen-reader support.
         *   Trigger on pushes to the `main` (or `master`) branch.
         *   Checkout the repository.
         *   Set up Node.js.

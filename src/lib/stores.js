@@ -49,8 +49,14 @@ export const gamificationProgress = createPersistentStore('kanjiGo_gamificationP
   longestStreak: 0,
   lastStudyDate: null, // ISO string 'YYYY-MM-DD'
   totalPoints: 0,
+  totalStudyTime: 0, // Total study time in minutes
+  dailyStudyTime: {}, // Object with date as key and minutes as value
+  sessionStartTime: null, // Track current session start
 });
 
 export const notes = createPersistentStore('kanjiGo_notes', []); // New store for notes
 
 export const furiganaVisibility = createPersistentStore('kanjiGo_furiganaVisibility', true);
+
+// Interest-based personalization: selected topics
+export const selectedInterests = createPersistentStore('kanjiGo_selectedInterests', []);

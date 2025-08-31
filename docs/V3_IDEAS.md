@@ -98,3 +98,24 @@ Visualize and track user progress to provide motivation and insights into their 
 *   **Learning Streak:** Implement a daily learning streak counter to encourage consistent study.
 *   **Time Spent Learning:** Basic tracking of active time spent within the application.
 *   **Visualizations:** Use charts or graphs to show progress over time.
+
+---
+
+## Personalization: Interests (Anime/Games)
+
+Problem: Examples feel generic; align content to user passions for engagement.
+
+Idea (initial scope): Add opt-in interests and prefer examples from those themes.
+
+Themes:
+- `one_piece` (One Piece)
+- `dragon_quest` (Dragon Quest)
+- `zelda` (The Legend of Zelda)
+
+UX sketch:
+- Settings -> Interests (checkboxes)
+    - Affect Kana example pick and Kanji example ordering.
+    - Add topic tags to relevant vocabulary items.
+
+Risks:
+- Trademarked names appear only as topic labels, not asset pulls; data remains generic Japanese words appearing in those franchises.

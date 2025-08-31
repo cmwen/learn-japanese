@@ -5,7 +5,7 @@
   import CulturalArticle from './CulturalArticle.svelte';
   import InputMethodGuideList from './InputMethodGuideList.svelte';
   import InputMethodGuideDetail from './InputMethodGuideDetail.svelte';
-  import { inputMethodGuides } from '../data/input_methods/input_method_guides';
+  import { inputMethodGuides } from '../data/input_methods/input_methods';
 
   let selectedArticle = null;
   let selectedInputMethodGuide = null;
@@ -86,10 +86,15 @@
           <h3>{categoryName}</h3>
           <div class="articles-list">
             {#each articles as article}
-              <div class="article-card" on:click={() => selectArticle(article.id)}>
+              <button 
+                type="button" 
+                class="article-card" 
+                on:click={() => selectArticle(article.id)}
+                aria-label="Read article: {article.title}"
+              >
                 <h4>{article.title}</h4>
                 <p>{article.keywords.join(', ')}</p>
-              </div>
+              </button>
             {/each}
           </div>
         </section>
@@ -145,11 +150,17 @@
     background-color: var(--background-color-secondary);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: left;
+    width: 100%;
+    font: inherit;
+    color: inherit;
   }
 
-  .article-card:hover {
+  .article-card:hover, .article-card:focus {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
   }
 
   .article-card h4 {

@@ -1,10 +1,29 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher, onMount, onDestroy } from 'svelte';
+    import { trapFocus } from '../lib/utils';
 
     export let show = false;
     export let title = '';
 
     const dispatch = createEventDispatcher();
+    let bottomSheetElement;
+    let cleanupFocusTrap;
+
+    $: if (show && bottomSheetElement) {
+        // Trap focus when bottom sheet opens
+        cleanupFocusTrap = trapFocus(bottomSheetElement);
+        bottomSheetElement.addEventListener('escape', close);
+    } else if (cleanupFocusTrap) {
+        // Clean up focus trap when bottom sheet closes
+        cleanupFocusTrap();
+        cleanupFocusTrap = null;
+    }
+
+    onDestroy(() => {
+        if (cleanupFocusTrap) {
+            cleanupFocusTrap();
+        }
+    });
 
     function close() {
         show = false;
@@ -14,10 +33,25 @@
 
 <div class="bottom-sheet-overlay" class:show on:click={close} on:keydown={(e) => { if (e.key === 'Escape') close(); }} role="button" tabindex="0"></div>
 
-<div class="bottom-sheet" class:show>
+<div class="bottom-sheet" 
+    bind:this={bottomSheetElement}
+    class:show
+    aria-modal="true"
+    aria-labelledby="bottom-sheet-title"
+    role="dialog"
+    tabindex="-1"
+>
+        aria-modal="true"
+    aria-labelledby="bottom-sheet-title"
+    role="dialog"
+    tabindex="-1"
+>
     <div class="bottom-sheet-header">
-        <h3>{title}</h3>
-        <button on:click={close}>&times;</button>
+        <h3 id="bottom-sheet-title">{title}</h3>
+        <button 
+            on:click={close}
+            aria-label="Close dialog"
+        >&times;</button>
     </div>
     <div class="bottom-sheet-content">
         <slot></slot>

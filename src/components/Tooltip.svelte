@@ -12,16 +12,30 @@
   function handleMouseLeave() {
     showTooltip = false;
   }
+
+  function handleKeyDown(event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      showTooltip = !showTooltip;
+    } else if (event.key === 'Escape') {
+      showTooltip = false;
+    }
+  }
 </script>
 
 <span
   class="tooltip-container"
   on:mouseenter={handleMouseEnter}
   on:mouseleave={handleMouseLeave}
+  on:keydown={handleKeyDown}
+  role="button"
+  tabindex="0"
+  aria-expanded={showTooltip}
+  aria-describedby={showTooltip ? 'tooltip-content' : undefined}
 >
   {text}
   {#if showTooltip}
-    <div class="tooltip-content">
+    <div class="tooltip-content" id="tooltip-content" role="tooltip">
       <p>{tooltipContent}</p>
       {#if link}
         <a href={link} target="_blank" rel="noopener noreferrer">Read More</a>
@@ -36,6 +50,11 @@
     display: inline-block;
     cursor: help;
     border-bottom: 1px dotted var(--text-color-secondary);
+  }
+
+  .tooltip-container:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
   }
 
   .tooltip-content {

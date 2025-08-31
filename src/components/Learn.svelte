@@ -2,9 +2,25 @@
   import { t } from '../lib/i18n';
   import { grammarCategories } from '../data/grammar/grammar_content';
   import { navigate } from '../lib/router';
+  import { startStudySession, endStudySession } from '../lib/utils';
   import GrammarTopic from './GrammarTopic.svelte';
+  import { onMount, onDestroy } from 'svelte';
 
   let selectedTopic = null;
+  let sessionActive = false;
+
+  onMount(() => {
+    if (selectedTopic) {
+      startStudySession();
+      sessionActive = true;
+    }
+  });
+
+  onDestroy(() => {
+    if (sessionActive) {
+      endStudySession();
+    }
+  });
 
   function selectTopic(categoryId, topicId) {
     navigate(`/learn/${categoryId}/${topicId}`);
@@ -21,11 +37,23 @@
       const category = grammarCategories.find(cat => cat.id === categoryId);
       if (category) {
         selectedTopic = category.topics.find(topic => topic.id === topicId);
+        if (selectedTopic && !sessionActive) {
+          startStudySession();
+          sessionActive = true;
+        }
       } else {
         selectedTopic = null; // Category not found
+        if (sessionActive) {
+          endStudySession();
+          sessionActive = false;
+        }
       }
     } else if (pathParts.length === 2 && pathParts[1] === 'learn') {
       selectedTopic = null;
+      if (sessionActive) {
+        endStudySession();
+        sessionActive = false;
+      }
     } else {
       selectedTopic = null; // Not a learn path
     }

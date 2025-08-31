@@ -63,15 +63,15 @@
     - [x] Ensure tooltips are non-intrusive and provide a "Read More" link to the full article.
 
 #### 5. Input Methods & Tools (within Explore Section)
-- [ ] **Content Structure:**
-    - [ ] Define a data structure for input method guides (e.g., JSON files with OS/device, steps, troubleshooting).
-    - [ ] Create placeholder content for a few guides (e.g., Windows, macOS, iOS).
-- [ ] **Guide List:**
-    - [ ] Implement a list of guides, clearly labeled by operating system/device.
-- [ ] **Guide Detail Page:**
-    - [ ] Implement step-by-step instructions with clear language.
-    - [ ] Integrate placeholder images/screenshots for visual guidance.
-    - [ ] Implement a dedicated troubleshooting section.
+- [x] **Content Structure:**
+    - [x] Define a data structure for input method guides (e.g., JSON files with OS/device, steps, troubleshooting).
+    - [x] Create placeholder content for a few guides (e.g., Windows, macOS, iOS).
+- [x] **Guide List:**
+    - [x] Implement a list of guides, clearly labeled by operating system/device.
+- [x] **Guide Detail Page:**
+    - [x] Implement step-by-step instructions with clear language.
+    - [x] Integrate placeholder images/screenshots for visual guidance.
+    - [x] Implement a dedicated troubleshooting section.
 
 #### 6. Learning & Progress Tracking (Progress Section)
 - [x] **Data Storage:**
@@ -81,17 +81,17 @@
     - [x] Implement prominent progress bars for "Kana Mastery," "Kanji Mastery," and "Vocabulary Mastery."
     - [x] Display the current learning streak (e.g., "🔥 7-Day Streak!").
     - [x] Implement summary displays for quiz performance (e.g., average score, accuracy, weakest areas).
-    - [ ] Display "Total Learning Time" or "Average Daily Study" (requires basic time tracking logic).
-    - [ ] Integrate charts/graphs for progress visualization (e.g., using a lightweight charting library or custom SVG).
+    - [x] Display "Total Learning Time" or "Average Daily Study" (requires basic time tracking logic).
+    - [x] Integrate charts/graphs for progress visualization (e.g., using a lightweight charting library or custom SVG).
 - [x] **Personal Notes & Journaling:**
     - [x] **Note List:**
         - [x] Implement a scrollable list of notes (title, date, snippet).
-        - [ ] Implement search and filter functionality for notes.
+        - [x] Implement search and filter functionality for notes.
     - [x] **Note Editor:**
         - [x] Implement a clean, full-screen text editor (e.g., a `<textarea>` or a simple Markdown editor).
         - [ ] Implement basic formatting options (bold, italics, bullet points) if using a custom editor.
         - [x] Implement logic to save notes to `IndexedDB`.
-        - [ ] Implement linking/tagging notes with specific vocabulary/kanji/grammar points.
+        - [x] Implement linking/tagging notes with specific vocabulary/kanji/grammar points.
     - [x] **Actions:**
         - [x] Implement "New Note" button.
         - [x] Implement "Edit" and "Delete" functionality for individual notes.
@@ -99,13 +99,13 @@
 
 #### 7. Cross-Cutting Concerns
 - [x] **Performance Optimization:**
-    - [ ] Optimize image assets for web.
-    - [ ] Consider lazy loading for content-heavy sections.
+    - [x] Optimize image assets for web.
+    - [x] Consider lazy loading for content-heavy sections.
     - [ ] Implement efficient rendering for long lists (e.g., virtual scrolling if needed for notes or vocabulary).
-- [ ] **Accessibility (A11y):**
-    - [ ] Ensure all new UI elements are keyboard navigable.
-    - [ ] Add appropriate ARIA attributes for screen reader compatibility.
-    - [ ] Maintain sufficient color contrast.
+- [x] **Accessibility (A11y):**
+    - [x] Ensure all new UI elements are keyboard navigable.
+    - [x] Add appropriate ARIA attributes for screen reader compatibility.
+    - [x] Maintain sufficient color contrast.
 - [x] **Internationalization (i18n):**
     - [x] Ensure all new UI text and content strings are added to the i18n system.
     - [x] Verify proper display of translated content.
@@ -115,3 +115,14 @@
 - [ ] **Testing:**
     - [ ] Write unit tests for new Svelte components and utility functions.
     - [ ] Write end-to-end tests (e.g., using Playwright) for critical user flows (import/export, navigation, note taking).
+
+    ---
+
+    ### 8. V3.1 Interest-Based Personalization
+    - [x] Data: Add topic tags to select vocabulary items (`one_piece`, `dragon_quest`, `zelda`).
+    - [x] Store: Create `selectedInterests` persistent store and default to `[]`.
+    - [x] i18n: Add keys for Interests UI and topic names in `public/locales/en.json` and `zh-TW.json`.
+    - [x] Settings: Add Interests section with three checkboxes bound to store.
+    - [x] App wiring: Bias Kana example selection by interests; sort Kanji examples by interest relevance.
+    - [x] Utils: Include `selectedInterests` in export/import/clear.
+    - [x] A11y: Ensure labels, focus order, and key handling in Interests UI.

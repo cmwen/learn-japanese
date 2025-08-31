@@ -2,8 +2,9 @@
   import { hiragana, katakana } from '../data/kana';
   import { t } from '../lib/i18n';
   import { masteryProgress, gamificationProgress } from '../lib/stores'; // Import gamificationProgress
+  import { startStudySession, endStudySession } from '../lib/utils';
   import Flashcard from './Flashcard.svelte';
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
 
   let allKana = [...hiragana, ...katakana];
   let quizDeck = [];
@@ -12,7 +13,12 @@
   let quizType = 'mixed'; // 'hiragana', 'katakana', or 'mixed'
 
   onMount(() => {
+    startStudySession();
     startQuiz();
+  });
+
+  onDestroy(() => {
+    endStudySession();
   });
 
   $: if (quizType) {

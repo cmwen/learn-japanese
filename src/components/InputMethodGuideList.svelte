@@ -8,9 +8,16 @@
   {#if guides.length > 0}
     <ul class="guide-list">
       {#each guides as guide (guide.id)}
-        <li class="guide-item" on:click={() => onSelectGuide(guide)}>
-          <h4>{guide.title}</h4>
-          <p>{guide.os}</p>
+        <li class="guide-item">
+          <button 
+            type="button" 
+            class="guide-button" 
+            on:click={() => onSelectGuide(guide)}
+            aria-label="View guide for {guide.title}"
+          >
+            <h4>{guide.title}</h4>
+            <p>{guide.description}</p>
+          </button>
         </li>
       {/each}
     </ul>
@@ -33,6 +40,12 @@
   }
 
   .guide-item {
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .guide-button {
+    width: 100%;
     background-color: var(--card-background);
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -40,19 +53,23 @@
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-align: left;
+    color: inherit;
+    font: inherit;
   }
 
-  .guide-item:hover {
+  .guide-button:hover, .guide-button:focus {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
   }
 
-  .guide-item h4 {
+  .guide-button h4 {
     margin-top: 0;
     color: var(--text-color-primary);
   }
 
-  .guide-item p {
+  .guide-button p {
     font-size: 0.9em;
     color: var(--text-color-secondary);
   }

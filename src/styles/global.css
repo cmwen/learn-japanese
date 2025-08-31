@@ -130,3 +130,20 @@ select {
   background-color: #e6ffe6 !important; /* Light green for mastered items */
   border: 1px solid #4CAF50 !important;
 }
+
+/* Image optimization and lazy loading styles */
+.stroke-order-image {
+  max-width: 300px;
+  max-height: 300px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive image behavior */
+@media (max-width: 600px) {
+  .stroke-order-image {
+    max-width: 100%;
+    max-height: 250px;
+  }
+}

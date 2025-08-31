@@ -15,11 +15,12 @@
   import Settings from './components/Settings.svelte'; // Import Settings
   import Navigation from './components/Navigation.svelte';
   import BottomSheet from './components/BottomSheet.svelte';
+  import LazyImage from './components/LazyImage.svelte';
   import Learn from './components/Learn.svelte'; // Import Learn component
   import Explore from './components/Explore.svelte'; // Import Explore component
   
   
-        import { masteryProgress, gamificationProgress } from './lib/stores';
+        import { masteryProgress, gamificationProgress, selectedInterests } from './lib/stores';
   import { derived } from 'svelte/store';
 
   let currentKanaExample = null; // New reactive state for selected Kana example
@@ -73,7 +74,10 @@
 
   function handleKanaSelect(event) {
     const clickedKana = event.detail;
-    currentKanaExample = vocabulary.find(word => word.kana.startsWith(clickedKana.kana)) || null;
+    const interests = $selectedInterests || [];
+    const byKana = vocabulary.filter(word => word.kana.startsWith(clickedKana.kana));
+    // Prefer items that match an interest theme, fallback to any match
+    currentKanaExample = byKana.find(w => (w.themes || []).some(t => interests.includes(t))) || byKana[0] || null;
     bottomSheetTitle = $t('vocabulary_example');
     bottomSheetContent = {
       type: 'kana',
@@ -168,7 +172,11 @@
         <p><strong>{$t('onyomi')}:</strong> {bottomSheetContent.data.onyomi.join(', ')}</p>
         <p><strong>{$t('kunyomi')}:</strong> {bottomSheetContent.data.kunyomi.join(', ')}</p>
         {#if bottomSheetContent.data.strokeOrderImg}
-          <img src={bottomSheetContent.data.strokeOrderImg} alt="{$t('stroke_order')} {bottomSheetContent.data.kanji}" />
+          <LazyImage 
+            src={bottomSheetContent.data.strokeOrderImg} 
+            alt="{$t('stroke_order')} {bottomSheetContent.data.kanji}" 
+            className="stroke-order-image"
+          />
         {/if}
         {#if bottomSheetContent.data.examples && bottomSheetContent.data.examples.length > 0}
           <h4>{$t('examples')}:</h4>
@@ -176,7 +184,7 @@
             {#each bottomSheetContent.data.examples as exampleId}
               {@const example = vocabulary.find(v => v.id === exampleId)}
               {#if example}
-                <li>{example.kana} ({example.romaji}) - {$t(example.en)}</li>
+                <li>{example.kana} ({example.romaji}) - {$t(example.id)}</li>
               {/if}
             {/each}
           </ul>

@@ -72,3 +72,24 @@
 *   Gamification (badges, leaderboards).
 *   Spaced Repetition System (SRS) algorithms.
 *   Support for additional languages beyond English and Traditional Chinese.
+
+---
+
+## V3.1 Add-on: Interest-Based Personalization (One Piece, Dragon Quest, Zelda)
+
+Goal: Increase engagement by letting users choose interests so examples and suggested vocabulary prioritize selected topics.
+
+Scope (initial):
+- Topics: `one_piece`, `dragon_quest`, `zelda`.
+- Users select any subset in Settings. Default is none selected.
+- Impacted surfaces:
+    - Example selection for Kana/ Kanji bottom sheet uses vocabulary tagged with selected topics when available; falls back to generic.
+    - Vocabulary list gains themes for these topics (filter remains unchanged).
+
+Non-goals (for now):
+- No dynamic content from the network; data is static and shipped in `src/data/vocabulary.js`.
+- No changes to mastery logic; interests only affect ordering/selection of examples and optional filters.
+
+Success criteria:
+- Users can toggle interests in Settings and see examples reflect those interests.
+- App remains fully offline and accessible.
